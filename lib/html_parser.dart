@@ -70,7 +70,7 @@ class HtmlParser extends StatelessWidget {
     // scaling is used, but relies on https://github.com/flutter/flutter/pull/59711
     // to wrap everything when larger accessibility fonts are used.
     return StyledText(
-      textSpan: parsedTree, 
+      textSpan: parsedTree,
       style: cleanedTree.style,
       textScaleFactor: MediaQuery.of(context).textScaleFactor,
     );
@@ -150,11 +150,7 @@ class HtmlParser extends StatelessWidget {
   }
 
   ///TODO document
-  static StyledElement applyCSS(StyledElement tree, css.StyleSheet sheet) {
-
-    //TODO
-
-    //Make sure style is never null.
+  static StyledElement applyCSS(StyledElement tree) {
     if (tree.style == null) {
       tree.style = Style();
     }
@@ -166,8 +162,7 @@ class HtmlParser extends StatelessWidget {
 
   /// [applyInlineStyle] applies inline styles (i.e. `style="..."`) recursively into the StyledElement tree.
   static StyledElement applyInlineStyles(StyledElement tree) {
-
-    if(tree.attributes.containsKey("style")) {
+    if (tree.attributes.containsKey("style")) {
       tree.style = tree.style.merge(inlineCSSToStyle(tree.attributes['style']));
     }
 
@@ -736,7 +731,10 @@ class StyledText extends StatelessWidget {
               ? double.infinity
               : null,
       child: Text.rich(textSpan,
-          style: style.generateTextStyle(), textAlign: style.textAlign, textDirection: style.direction, textScaleFactor: 1.0),
+          style: style.generateTextStyle(),
+          textAlign: style.textAlign,
+          textDirection: style.direction,
+          textScaleFactor: 1.0),
     );
   }
 }
