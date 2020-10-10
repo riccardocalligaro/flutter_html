@@ -8,32 +8,20 @@ environment:
   flutter: '>=1.17.0'
 
 dependencies:
-  # Plugin for parsing html
-  html: ^0.14.0+3
-
-  # Plugins for parsing css
-  csslib: ^0.16.1
-  css_colors: ^1.0.2
-
-  # Plugins for rendering the <video> tag.
-  video_player: ^0.10.10
-  chewie: ^0.9.10
-
-  # Plugin for rendering the <iframe> tag.
-  webview_flutter: ^0.3.21
-
-  # Plugins for rendering the <audio> tag.
-  chewie_audio: ^1.0.0+1
-
-  # Plugins for rendering the <svg> tag.
-  flutter_svg: ^0.17.4
-
   flutter:
     sdk: flutter
+  chewie: ^0.9.10
+  chewie_audio: ^1.0.0+1
+  css_colors: ^1.0.2
+  csslib: ^0.16.1
+  fancy_shimmer_image: ^1.2.0
+  flutter_svg: ^0.17.4
+  html: ^0.14.0+3
+  video_player: ^0.10.10
+  webview_flutter: ^0.3.21
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter:
-
+flutter: null

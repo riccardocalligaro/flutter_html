@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:chewie/chewie.dart';
 import 'package:chewie_audio/chewie_audio.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_html/src/utils.dart';
@@ -122,14 +123,8 @@ class ImageContentElement extends ReplacedElement {
           context.parser.onImageError?.call(exception, stackTrace);
         },
       );
-      imageWidget = Image.network(
-        src,
-        frameBuilder: (ctx, child, frame, _) {
-          if (frame == null) {
-            return Text(alt ?? "", style: context.style.generateTextStyle());
-          }
-          return child;
-        },
+      imageWidget = FancyShimmerImage(
+        imageUrl: src,
       );
     }
 
