@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:chewie/chewie.dart';
@@ -108,6 +109,25 @@ class ImageContentElement extends ReplacedElement {
       );
       imageWidget = Image.asset(
         assetPath,
+        frameBuilder: (ctx, child, frame, _) {
+          if (frame == null) {
+            return Text(alt ?? "", style: context.style.generateTextStyle());
+          }
+          return child;
+        },
+      );
+    } else if (src.startsWith("myromalocalfile://")) {
+      final imageFile = File(src.replaceFirst('myromalocalfile://', ''));
+
+      precacheImage(
+        FileImage(imageFile),
+        context.buildContext,
+        onError: (exception, StackTrace stackTrace) {
+          context.parser.onImageError?.call(exception, stackTrace);
+        },
+      );
+      imageWidget = Image.file(
+        imageFile,
         frameBuilder: (ctx, child, frame, _) {
           if (frame == null) {
             return Text(alt ?? "", style: context.style.generateTextStyle());
