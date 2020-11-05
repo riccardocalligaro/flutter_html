@@ -144,6 +144,7 @@ class ImageContentElement extends ReplacedElement {
         },
       );
       imageWidget = FancyShimmerImage(
+        width: double.infinity,
         imageUrl: src,
       );
     }
